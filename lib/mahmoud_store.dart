@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mahmoud_store/core/app/env_variable.dart';
 
 class MahmoudStore extends StatelessWidget {
   const MahmoudStore({super.key});
@@ -6,7 +7,7 @@ class MahmoudStore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
