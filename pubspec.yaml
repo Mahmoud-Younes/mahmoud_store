@@ -131,8 +131,9 @@ flutter:
     - .env.prod
     # - lang/ar.json
     # - lang/en.json
-    - assets/images/
-
+    - assets/images/core/
+    - assets/images/icons/ 
+    - assets/images/splash/
 
 
   fonts:
