@@ -11,49 +11,46 @@ class MahmoudStore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
+    return ValueListenableBuilder<bool>(
       valueListenable: ConnectivityController.instance.isConnected,
-      builder: (_, value, _) {
-        if (value) {
-          return ScreenUtilInit(
-            designSize: const Size(375, 812),
-            minTextAdapt: true,
-            child: MaterialApp(
-              debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
+      builder: (_, isConnected, _) {
+        return ScreenUtilInit(
+          designSize: const Size(375, 812),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, widget) {
+            return GestureDetector(
+              onTap: () {
+                // إلغاء تركيز لوحة المفاتيح عند النقر خارج الحقول
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+              child: MaterialApp(
+                debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
 
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              ),
-              locale: const Locale('ar'), //TODO: change locale with cubit
-              localizationsDelegates:
-                  AppLocalizationsSetup.localizationsDelegates,
-              supportedLocales: AppLocalizationsSetup.supportedLocales,
-              onGenerateRoute: AppRoutes.onGenerateRoute,
-              initialRoute: AppRoutes.login,
-            ),
-            builder: (context, widget) {
-              return GestureDetector(
-                //  onTap: () {
-                //           FocusManager.instance.primaryFocus?.unfocus();
-                //         },
-                child: Scaffold(
-                  body: Builder(
-                    builder: (context) {
-                      ConnectivityController.instance.init();
-                      return widget!;
-                    },
+                theme: ThemeData(
+                  colorScheme: ColorScheme.fromSeed(
+                    seedColor: Colors.deepPurple,
                   ),
+                  useMaterial3: true,
                 ),
-              );
-            },
-          );
-        } else {
-          return MaterialApp(
-            title: 'No NetWork ',
-            debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
-            home: const NoNetWorkScreen(),
-          );
-        }
+                locale: const Locale('ar'), //TODO: change locale with cubit
+                localizationsDelegates:
+                    AppLocalizationsSetup.localizationsDelegates,
+                supportedLocales: AppLocalizationsSetup.supportedLocales,
+                localeResolutionCallback:
+                    AppLocalizationsSetup.localeResolutionCallback,
+                onGenerateRoute: AppRoutes.onGenerateRoute,
+                initialRoute: isConnected ? AppRoutes.login : null,
+                home: isConnected ? null : const NoNetWorkScreen(),
+                builder: (context, widget) {
+                  // تهيئة الاتصال بالشبكة داخل الـ Builder لضمان توفر السياق
+                  ConnectivityController.instance.init();
+                  return widget!;
+                },
+              ),
+            );
+          },
+        );
       },
     );
   }
