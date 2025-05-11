@@ -141,8 +141,9 @@ flutter:
     - assets/images/core/
     - assets/images/icons/ 
     - assets/images/splash/
-
-
+    - assets/images/customer/
+    - assets/images/admin/
+    - assets/images/svg/    
   fonts:
     # Arabic Font
     - family: Cairo

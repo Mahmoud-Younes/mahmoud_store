@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mahmoud_store/core/common/under_build_screen.dart';
 import 'package:mahmoud_store/core/routes/base_routes.dart';
-import 'package:mahmoud_store/presentation/screens/login_screen.dart';
-import 'package:mahmoud_store/presentation/screens/sign_up_screen.dart';
+import 'package:mahmoud_store/presentation/auth/presentation/screens/login_screen.dart';
+import 'package:mahmoud_store/presentation/auth/presentation/screens/sign_up_screen.dart';
 
 class AppRoutes {
   static const String login = 'login';
