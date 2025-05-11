@@ -5,6 +5,7 @@ import 'package:mahmoud_store/core/app/env_variable.dart';
 import 'package:mahmoud_store/core/common/no_network_screen.dart';
 import 'package:mahmoud_store/core/language/app_localizations_setup.dart';
 import 'package:mahmoud_store/core/routes/app_routes.dart';
+import 'package:mahmoud_store/core/styles/theme/app_theme.dart';
 
 class MahmoudStore extends StatelessWidget {
   const MahmoudStore({super.key});
@@ -27,13 +28,8 @@ class MahmoudStore extends StatelessWidget {
               child: MaterialApp(
                 debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
 
-                theme: ThemeData(
-                  colorScheme: ColorScheme.fromSeed(
-                    seedColor: Colors.deepPurple,
-                  ),
-                  useMaterial3: true,
-                ),
-                locale: const Locale('ar'), //TODO: change locale with cubit
+                theme: themeDark(),
+                locale: const Locale('en'), //TODO: change locale with cubit
                 localizationsDelegates:
                     AppLocalizationsSetup.localizationsDelegates,
                 supportedLocales: AppLocalizationsSetup.supportedLocales,
