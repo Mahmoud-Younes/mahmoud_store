@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "402676696580",
+    "project_id": "mahmoud-store-b7e94",
+    "storage_bucket": "mahmoud-store-b7e94.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402676696580:android:234e1436517f381716d751",
+        "android_client_info": {
+          "package_name": "com.example.mahmoud_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwf2evL1nPpuYOdwoFC_EOPeW2DhoC2zs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
