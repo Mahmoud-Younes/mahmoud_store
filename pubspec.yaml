@@ -78,7 +78,7 @@ dependencies:
 
   #Notifications
   firebase_messaging: ^15.2.5
-  intl: ^0.19.0
+  intl: ^0.20.2
 
   #local database Hive
   hive: ^2.2.3
@@ -96,9 +96,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^7.0.0
+  
+  flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.3
-  flutter_lints: ^5.0.0
+  very_good_analysis: ^9.0.0
+
   # dart run build_runner build --delete-conflicting-outputs
   build_runner: ^2.4.8
   freezed: ^3.0.0-0.0.dev
@@ -112,27 +114,12 @@ flutter_icons:
   image_path: "assets/images/icons/app_icon.jpg"
   adaptive_icon_background: "#ffffff"
   adaptive_icon_foreground: "assets/images/icons/play_store_512.png"
-# flutter pub run flutter_launcher_icons
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
   assets:
     - .env.dev
     - .env.prod
