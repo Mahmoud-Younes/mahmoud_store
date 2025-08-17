@@ -12,18 +12,14 @@ void main() async {
 
   await EnvVariable.instance.init(envType: EnvTypeEnum.dev);
 
-//  "current_key": "AIzaSyBDzognjD6pwp6oKKOoEkklgOunZo3W-fs" ==> apiKey
-//  "mobilesdk_app_id": "1:255535904497:android:bf1c974c2689a199431b50" ==> appId
-// "project_number": "255535904497" ==> messagingSenderId
-// "project_id": "asroo-dev" ==> projectId
-
   Platform.isAndroid
       ? await Firebase.initializeApp(
           options: const FirebaseOptions(
-            apiKey: 'AIzaSyDzDbL3x8u-tFcR-5E3UTK06ZNPlTaWWII',
-            appId: '1:123783791346:android:fd128a6da492bc142dc66b',
-            messagingSenderId: '123783791346',
-            projectId: 'asroostore',
+            apiKey: 'AIzaSyDwf2evL1nPpuYOdwoFC_EOPeW2DhoC2zs',
+            appId: '1:402676696580:android:234e1436517f381716d751',
+            messagingSenderId: '402676696580',
+            projectId: 'mahmoud-store-b7e94',
+            storageBucket: 'mahmoud-store-b7e94.firebasestorage.app',
           ),
         )
       : await Firebase.initializeApp();
@@ -31,6 +27,6 @@ void main() async {
   await SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
   ).then((_) {
-    runApp(const MahmoudStore());
+    runApp(const MahmoudStore());       
   });
 }
