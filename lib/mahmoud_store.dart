@@ -3,84 +3,52 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mahmoud_store/core/app/connectivity_controller.dart';
 import 'package:mahmoud_store/core/app/env.variables.dart';
 import 'package:mahmoud_store/core/common/screens/no_network_screen.dart';
-import 'package:mahmoud_store/core/style/fonts/font_family_helper.dart';
-import 'package:mahmoud_store/core/style/fonts/font_weight_helper.dart';
+import 'package:mahmoud_store/core/language/app_localizations_setup.dart';
+import 'package:mahmoud_store/core/routes/app_routes.dart';
+import 'package:mahmoud_store/core/style/theme/app_theme.dart';
 
 class MahmoudStore extends StatelessWidget {
   const MahmoudStore({super.key});
 
   @override
-
   Widget build(BuildContext context) {
-   return ValueListenableBuilder(
+    return ValueListenableBuilder(
       valueListenable: ConnectivityController.instance.isConnected,
-      builder: (_, value,_) {
-        if (value) { 
+      builder: (_, value, _) {
+        if (value) {
           return ScreenUtilInit(
             designSize: const Size(375, 812),
             minTextAdapt: true,
             child: MaterialApp(
               title: 'Asroo Store',
               debugShowCheckedModeBanner: EnvVariable.instance.debugMode,
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                useMaterial3: true,
-              ),
+              theme: themeDark(),
+              //TODO: Change to themeLight() for light mode
+              locale: const Locale(
+                'ar',
+              ), //TODO: Change to Locale('en') for English
+              supportedLocales: AppLocalizationsSetup.supportedLocales,
+              localizationsDelegates:
+                  AppLocalizationsSetup.localizationsDelegates,
+              localeResolutionCallback:
+                  AppLocalizationsSetup.localeResolutionCallback,
               builder: (context, widget) {
-                return Scaffold(
-                  body: Builder(
-                    builder: (context) {
-                      ConnectivityController.instance.init();
-                      return widget!;
-                    },
+                return GestureDetector(
+                  onTap: () {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  child: Scaffold(
+                    body: Builder(
+                      builder: (context) {
+                        ConnectivityController.instance.init();
+                        return widget!;
+                      },
+                    ),
                   ),
                 );
               },
-              home: Scaffold(
-                appBar: AppBar(
-                  title: const Text('Asroo Store'),
-                ),
-                body: const Center(
-                  child: Column(
-                    children: [
-                      // Old
-                      Text(
-                        'Old Font',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        'وليد محمود',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      // New
-
-                      Text(
-                        'Old Font',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: FontFamilyHelper.poppinsEnglish,
-                          fontWeight: FontWeightHelper.bold,
-                        ),
-                      ),
-
-                      Text(
-                        'وليد محمود',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: FontFamilyHelper.cairoArabic,
-                          fontWeight: FontWeightHelper.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              onGenerateRoute: AppRoutes.onGenerateRoute,
+              initialRoute: AppRoutes.testOne,
             ),
           );
         } else {
