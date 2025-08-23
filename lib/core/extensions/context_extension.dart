@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mahmoud_store/core/language/app_localizations.dart';
+import 'package:mahmoud_store/core/style/theme/assets_extension.dart';
 import 'package:mahmoud_store/core/style/theme/color_extension.dart';
-import 'package:mahmoud_store/core/style/theme/image_extension.dart';
 
 extension ContextExt on BuildContext {
   //color
   MyColors get color => Theme.of(this).extension<MyColors>()!;
 
   // images
+  MyAssets get assets => Theme.of(this).extension<MyAssets>()!;
 
-  MyImages get assets => Theme.of(this).extension<MyImages>()!;
+  // style
+  TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
 
   //Language
   String translate(String langkey) {
