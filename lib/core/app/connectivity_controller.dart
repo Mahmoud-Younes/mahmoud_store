@@ -24,7 +24,7 @@ class ConnectivityController {
       isConnected.value = false;
       return false;
     } else if (result.contains(ConnectivityResult.mobile) ||
-        result.contains(ConnectivityResult.wifi) ) {
+        result.contains(ConnectivityResult.wifi)) {
       isConnected.value = true;
       return true;
     }
