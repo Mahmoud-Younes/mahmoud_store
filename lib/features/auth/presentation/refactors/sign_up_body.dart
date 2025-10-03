@@ -11,7 +11,7 @@ import 'package:mahmoud_store/features/auth/presentation/widgets/auth_title_info
 import 'package:mahmoud_store/features/auth/presentation/widgets/dark_and_lang_buttons.dart';
 import 'package:mahmoud_store/features/auth/presentation/widgets/sign_up/sign_up_button.dart';
 import 'package:mahmoud_store/features/auth/presentation/widgets/sign_up/sign_up_text_form.dart';
-import 'package:mahmoud_store/features/auth/presentation/widgets/sign_up/user_avatar_images.dart';
+import 'package:mahmoud_store/features/auth/presentation/widgets/sign_up/user_avatar_image.dart';
 
 class SignUpBody extends StatelessWidget {
   const SignUpBody({super.key});
