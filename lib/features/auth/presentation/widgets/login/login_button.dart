@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +24,7 @@ class LoginButton extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             success: (userRole) {
+            
               ShowToast.showToastSuccessTop(
                 message: context.translate(LangKeys.loggedSuccessfully),
               );
@@ -32,9 +35,7 @@ class LoginButton extends StatelessWidget {
               }
             },
             error: (messsage) {
-              ShowToast.showToastErrorTop(
-                message: context.translate(messsage),
-              );
+              ShowToast.showToastErrorTop(message: context.translate(messsage));
             },
           );
         },
@@ -45,9 +46,7 @@ class LoginButton extends StatelessWidget {
                 onPressed: () {},
                 height: 50.h,
                 width: MediaQuery.of(context).size.width,
-                child: const CircularProgressIndicator(
-                  color: Colors.white,
-                ),
+                child: const CircularProgressIndicator(color: Colors.white),
               );
             },
             orElse: () {

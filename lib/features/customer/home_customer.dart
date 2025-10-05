@@ -7,7 +7,7 @@ class HomeCustomerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Customer '),
+        title: const Text('Home Customer '),
       ),
     );
   }

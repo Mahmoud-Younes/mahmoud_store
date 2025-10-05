@@ -46,7 +46,7 @@ class MahmoudStore extends StatelessWidget {
                     supportedLocales: AppLocalizationsSetup.supportedLocales,
                     localizationsDelegates:
                         AppLocalizationsSetup.localizationsDelegates,
-                        
+
                     localeResolutionCallback:
                         AppLocalizationsSetup.localeResolutionCallback,
                     builder: (context, widget) {
@@ -59,15 +59,16 @@ class MahmoudStore extends StatelessWidget {
                         ),
                       );
                     },
-                     navigatorKey: sl<GlobalKey<NavigatorState>>(),//for context 
+                    //for contex
+                    navigatorKey: sl<GlobalKey<NavigatorState>>(),
                     onGenerateRoute: AppRoutes.onGenerateRoute,
-                    initialRoute: SharedPref()
-                                .getString(PrefKeys.accessToken) !=
-                            null
-                        ? SharedPref().getString(PrefKeys.userRole) != 'admin'
-                            ? AppRoutes.homeCustomer
-                            : AppRoutes.homeAdmin
-                        : AppRoutes.login,
+                    initialRoute:
+                        SharedPref().getString(PrefKeys.accessToken) != null
+                            ? SharedPref().getString(PrefKeys.userRole) !=
+                                    'admin'
+                                ? AppRoutes.homeCustomer
+                                : AppRoutes.homeAdmin
+                            : AppRoutes.login,
                   );
                 },
               ),

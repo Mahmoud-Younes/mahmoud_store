@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,6 +12,7 @@ import 'package:mahmoud_store/features/auth/data/repos/auth_repo.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
+
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._repo) : super(const _Initial()) {
@@ -45,9 +47,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await SharedPref().setString(PrefKeys.accessToken, token);
         // get user role
         final user = await _repo.userRole(token);
+     
         await SharedPref().setInt(PrefKeys.userId, user.userId ?? 0);
         await SharedPref().setString(PrefKeys.userRole, user.userRole ?? '');
-        await _repo.addUserIdFirebase(userId: user.userId.toString());
         emit(AuthState.success(userRole: user.userRole ?? ''));
       },
       failure: (error) {
@@ -81,3 +83,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 }
+
+
+
