@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mahmoud_store/core/common/widgets/admin_app_bar.dart';
@@ -17,16 +16,22 @@ class DashBoardScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => sl<ProductsNumberBloc>()
-            ..add(const ProductsNumberEvent.getProductsNumber()),
+          create:
+              (context) =>
+                  sl<ProductsNumberBloc>()
+                    ..add(const ProductsNumberEvent.getProductsNumber()),
         ),
         BlocProvider(
-          create: (context) => sl<CategoriesNumberBloc>()
-            ..add(const CategoriesNumberEvent.getCategoriesNumber()),
+          create:
+              (context) =>
+                  sl<CategoriesNumberBloc>()
+                    ..add(const CategoriesNumberEvent.getCategoriesNumber()),
         ),
         BlocProvider(
-          create: (context) => sl<UsersNumberBloc>()
-            ..add(const UsersNumberEvent.getUsersNumber()),
+          create:
+              (context) =>
+                  sl<UsersNumberBloc>()
+                    ..add(const UsersNumberEvent.getUsersNumber()),
         ),
       ],
       child: Scaffold(
