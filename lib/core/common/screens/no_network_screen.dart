@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:mahmoud_store/core/style/images/app_images.dart';
 
@@ -12,7 +13,7 @@ class NoNetWorkScreen extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(AppImages.noNetwork),
-            fit: BoxFit.contain,
+            fit: BoxFit.fill,
           ),
         ),
       ),

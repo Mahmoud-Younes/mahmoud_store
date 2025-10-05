@@ -9,6 +9,11 @@ import 'package:mahmoud_store/core/service/graphql/dio_factory.dart';
 import 'package:mahmoud_store/features/auth/data/data_source/auth_data_source.dart';
 import 'package:mahmoud_store/features/auth/data/repos/auth_repo.dart';
 import 'package:mahmoud_store/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:mahmoud_store/features/admin/dashboard/presentation/bloc/products_number/products_number_bloc.dart';
+import 'package:mahmoud_store/features/admin/dashboard/presentation/bloc/categories_number/categories_number_bloc.dart';
+import 'package:mahmoud_store/features/admin/dashboard/presentation/bloc/users_number/users_number_bloc.dart';
+import 'package:mahmoud_store/features/admin/dashboard/data/data_soruce/dashboard_data_source.dart';
+import 'package:mahmoud_store/features/admin/dashboard/data/repos/dashboard_repo.dart';
 
 final sl = GetIt.instance;
 
@@ -28,6 +33,14 @@ Future<void> _initCore() async {
     ..registerFactory(() => UploadImageCubit(sl()))
     ..registerLazySingleton(() => UploadImageRepo(sl()))
     ..registerLazySingleton(() => UploadImageDataSource(sl()));
+
+  // Dashboard
+  sl
+    ..registerLazySingleton(() => DashBoardDataSource(sl()))
+    ..registerLazySingleton(() => DashBoardRepo(sl()))
+    ..registerFactory(() => ProductsNumberBloc(sl()))
+    ..registerFactory(() => CategoriesNumberBloc(sl()))
+    ..registerFactory(() => UsersNumberBloc(sl()));
 }
 
 Future<void> _initAuth() async {
