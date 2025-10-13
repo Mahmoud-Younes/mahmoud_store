@@ -9,6 +9,7 @@ import 'package:mahmoud_store/core/di/injection_container.dart';
 import 'package:mahmoud_store/core/service/shared_pref/shared_pref.dart';
 import 'package:mahmoud_store/mahmoud_store.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
